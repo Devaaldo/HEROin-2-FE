@@ -1,9 +1,63 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiArrowRight, FiShield, FiSettings, FiActivity } from "react-icons/fi";
+import dontol from "../assets/image/dontol.png";
+// Impor ikon-ikon yang tersedia dari Feather Icons
+import {
+	FiArrowRight,
+	FiShield,
+	FiSettings,
+	FiActivity,
+	FiClock,
+	FiUsers,
+	FiBook,
+	FiDollarSign,
+	FiMonitor,
+	FiInfo,
+	FiHeart,
+	FiAlertCircle, // Ganti FiBrain dengan FiAlertCircle
+} from "react-icons/fi";
 
 const Home = () => {
+	// Definisi dampak untuk digunakan di bagian Grid
+	const impactItems = [
+		{
+			title: "Waktu Terbuang",
+			description:
+				"Banyaknya waktu yang terbuang hanya karena bermain game tanpa batasan.",
+			IconComponent: FiClock,
+		},
+		{
+			title: "Gangguan Kesehatan",
+			description:
+				"Kesehatan mata terganggu akibat terlalu lama menatap layar.",
+			IconComponent: FiMonitor,
+		},
+		{
+			title: "Gangguan Psikologis",
+			description:
+				"Mudah emosional, sulit berkonsentrasi, dan sering mengantuk.",
+			IconComponent: FiAlertCircle, // Menggunakan FiAlertCircle sebagai pengganti FiBrain
+		},
+		{
+			title: "Pemborosan Biaya",
+			description:
+				"Pengeluaran berlebih untuk internet dan pembelian dalam game.",
+			IconComponent: FiDollarSign,
+		},
+		{
+			title: "Dampak Sosial",
+			description:
+				"Kesulitan berinteraksi sosial dan berkomunikasi di dunia nyata.",
+			IconComponent: FiUsers,
+		},
+		{
+			title: "Penurunan Akademik",
+			description: "Menurunnya prestasi akademik dan minat belajar.",
+			IconComponent: FiBook,
+		},
+	];
+
 	// Animasi untuk komponen yang masuk
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -63,9 +117,9 @@ const Home = () => {
 							className="hidden md:block"
 						>
 							<img
-								src="/assets/images/hero-image.svg"
-								alt="Game Addiction Illustration"
-								className="w-full h-auto"
+								src={dontol}
+								alt="Gambar Dontol"
+								className="w-full h-auto rounded-lg"
 							/>
 						</motion.div>
 					</div>
@@ -240,50 +294,14 @@ const Home = () => {
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						{[
-							{
-								icon: <FiClock />,
-								title: "Waktu Terbuang",
-								description:
-									"Banyaknya waktu yang terbuang hanya karena bermain game tanpa batasan.",
-							},
-							{
-								icon: <FiMonitor />,
-								title: "Gangguan Kesehatan",
-								description:
-									"Kesehatan mata terganggu akibat terlalu lama menatap layar.",
-							},
-							{
-								icon: <FiBrain />,
-								title: "Gangguan Psikologis",
-								description:
-									"Mudah emosional, sulit berkonsentrasi, dan sering mengantuk.",
-							},
-							{
-								icon: <FiDollarSign />,
-								title: "Pemborosan Biaya",
-								description:
-									"Pengeluaran berlebih untuk internet dan pembelian dalam game.",
-							},
-							{
-								icon: <FiUsers />,
-								title: "Dampak Sosial",
-								description:
-									"Kesulitan berinteraksi sosial dan berkomunikasi di dunia nyata.",
-							},
-							{
-								icon: <FiBook />,
-								title: "Penurunan Akademik",
-								description: "Menurunnya prestasi akademik dan minat belajar.",
-							},
-						].map((item, index) => (
+						{impactItems.map((item, index) => (
 							<motion.div
 								key={index}
 								whileHover={{ scale: 1.03 }}
 								className="p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-100"
 							>
 								<div className="p-3 w-12 h-12 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mb-4">
-									<span className="text-primary text-xl">{item.icon}</span>
+									<item.IconComponent className="text-primary text-xl" />
 								</div>
 								<h3 className="text-lg font-semibold text-dark mb-2">
 									{item.title}
