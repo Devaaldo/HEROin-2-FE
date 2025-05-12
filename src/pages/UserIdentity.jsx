@@ -15,7 +15,8 @@ import {
 
 import { useDiagnosis } from "../contexts/DiagnosisContext";
 import { userService } from "../api/user";
-import LoadingButton from "../components/LoadingButton";
+// Hapus import LoadingButton yang tidak ada
+// import LoadingButton from '../components/LoadingButton';
 
 // Opsi untuk program studi
 const PROGRAM_STUDI_OPTIONS = [
@@ -561,11 +562,12 @@ const UserIdentity = () => {
 						</div>
 
 						<div className="mt-8 flex justify-end">
+							{/* Gunakan tombol biasa karena LoadingButton belum tersedia */}
 							<motion.button
 								type="submit"
 								disabled={isSubmitting}
 								className="btn-primary inline-flex items-center"
-								whileTap={{ scale: 0.95 }}
+								whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
 							>
 								{isSubmitting ? (
 									<>
